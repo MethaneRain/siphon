@@ -111,8 +111,6 @@ class NCSS(HTTPEndPoint):
 
               } # end dict
 
-    # Top of Thredds catalog
-    self.cat_top_url = "https://thredds.ucar.edu/thredds/catalog.xml"
 
     # Need staticmethod to keep this from becoming a bound method, where self
     # is passed implicitly
@@ -191,11 +189,13 @@ class NCSS(HTTPEndPoint):
 
         '''
         import webbrowser
-        cat_1 = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
+
+        # Top of Thredds catalog
+        self.cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
         cat_2 = f"{self.model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
             f"_{init_hour}.grib2/dataset.html"
 
-        self.catalog = cat_1+cat_2
+        self.catalog = self.cat_top_url+cat_2
         webbrowser.open(self.catalog)
 
 
