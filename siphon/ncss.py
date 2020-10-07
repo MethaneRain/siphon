@@ -54,40 +54,66 @@ class NCSS(HTTPEndPoint):
                      "CONUS_20km":"CONUS_20km/RR_CONUS_20km",
                      "CONUS_40km":"CONUS_40km/RR_CONUS_40km"},
 
-              "GFS":{"0p25_ana":"Global_0p25deg_ana/GFS_Global_0p25deg_ana",
-                     "0p25":"Global_0p25deg/GFS_Global_0p25deg",
-                     "0p5_ana":"Global_0p5deg_ana/GFS_Global_0p5deg_ana",
-                     "0p5":"Global_0p5deg/GFS_Global_0p5deg",
-                     "onedeg_ana":"Global_onedeg_ana/GFS_Global_onedeg_ana",
-                     "onedeg":"Global_onedeg/GFS_Global_onedeg",
-                     "Pac_20km":"Pacific_20km/GFS_Pacific_20km",
-                     "PR_0p25":"Puerto_Rico_0p25deg/GFS_Puerto_Rico_0p25deg",
-                     "CONUS_95km":"CONUS_95km/GFS_CONUS_95km",
-                     "CONUS_80km":"CONUS_80km/GFS_CONUS_80km",
-                     "CONUS_20km":"CONUS_20km/GFS_CONUS_20km",
-                     "AK_20km":"Alaska_20km/GFS_Alaska_20km"},
+              "GFS":{"0p25_ana":"GFS/Global_0p25deg_ana/GFS_Global_0p25deg_ana",
+                     "0p25":"GFS/Global_0p25deg/GFS_Global_0p25deg",
+                     "0p5_ana":"GFS/Global_0p5deg_ana/GFS_Global_0p5deg_ana",
+                     "0p5":"GFS/Global_0p5deg/GFS_Global_0p5deg",
+                     "onedeg_ana":"GFS/Global_onedeg_ana/GFS_Global_onedeg_ana",
+                     "onedeg":"GFS/Global_onedeg/GFS_Global_onedeg",
+                     "Pac_20km":"GFS/Pacific_20km/GFS_Pacific_20km",
+                     "PR_0p25":"GFS/Puerto_Rico_0p25deg/GFS_Puerto_Rico_0p25deg",
+                     "CONUS_95km":"GFS/CONUS_95km/GFS_CONUS_95km",
+                     "CONUS_80km":"GFS/CONUS_80km/GFS_CONUS_80km",
+                     "CONUS_20km":"GFS/CONUS_20km/GFS_CONUS_20km",
+                     "AK_20km":"GFS/Alaska_20km/GFS_Alaska_20km"},
 
-              "HRRR":{"CONUS_3km":"CONUS_3km/surface/HRRR_CONUS_3km",
-                      "CONUS_2p5km_ana":"CONUS_2p5km_ANA/HRRR_CONUS_2p5km_ana",
-                      "CONUS_2p5km":"CONUS_2p5km/HRRR_CONUS_2p5km"},
+              "HRRR":{"CONUS_3km":"HRRR/CONUS_3km/surface/HRRR_CONUS_3km",
+                      "CONUS_2p5km_ana":"HRRR/CONUS_2p5km_ANA/HRRR_CONUS_2p5km_ana",
+                      "CONUS_2p5km":"HRRR/CONUS_2p5km/HRRR_CONUS_2p5km"},
 
-              "GEFS":{"onedeg_ana":"Global_1p0deg_Ensemble/members-analysis/GEFS_Global_1p0deg_Ensemble_ana",
-                  "onedeg":"Global_1p0deg_Ensemble/members/GEFS_Global_1p0deg_Ensemble",
-                  "onedeg_derived":"Global_1p0deg_Ensemble/derived/GEFS_Global_1p0deg_Ensemble_derived"},
+              "GEFS":{"onedeg_ana":"GEFS/Global_1p0deg_Ensemble/members-analysis/GEFS_Global_1p0deg_Ensemble_ana",
+                      "onedeg":"GEFS/Global_1p0deg_Ensemble/members/GEFS_Global_1p0deg_Ensemble",
+                      "onedeg_derived":"GEFS/Global_1p0deg_Ensemble/derived/GEFS_Global_1p0deg_Ensemble_derived"},
 
-              "NAM":{"AK_11km":"Alaska_11km/NAM_Alaska_11km",
-                                    "AK_45km_noaaport":"Alaska_45km/noaaport",
-                                    "AK_45km_conduit":"Alaska_45km/conduit",
-                                    "AK_95km":"Alaska_95km",
-                                    "CONUS_12km_noaaport":"CONUS_12km/NAM_CONUS_12km",
-                                    "CONUS_12km_conduit":"CONUS_12km/conduit",
-                                    "CONUS_20km":"CONUS_20km/noaaport",
-                                    "CONUS_40km":"CONUS_40km/noaaport",
-                                    "CONUS_80km":"CONUS_80km/noaaport",
-                                    "Polar_90km":"Polar_90km",
-                                    "Fireweather_nested":"Firewxnest",
-                                    }
-              }
+              "NAM":{"AK_11km":"NAM/Alaska_11km/NAM_Alaska_11km",
+                     "AK_45km_noaaport":"NAM/Alaska_45km/noaaport",
+                     "AK_45km_conduit":"NAM/Alaska_45km/conduit",
+                     "AK_95km":"NAM/Alaska_95km",
+                     "CONUS_12km_noaaport":"NAM/CONUS_12km/NAM_CONUS_12km",
+                     "CONUS_12km_conduit":"NAM/CONUS_12km/conduit",
+                     "CONUS_20km":"NAM/CONUS_20km/noaaport",
+                     "CONUS_40km":"NAM/CONUS_40km/noaaport",
+                     "CONUS_80km":"NAM/CONUS_80km/noaaport",
+                     "Polar_90km":"NAM/Polar_90km",
+                     "Fireweather_nested":"NAM/Firewxnest"},
+
+              "NDFD":{"CONUS_forecast_grids_noaaport":"NDFD/SPC/CONUS/NDFD_SPC_CONUS_2p5km",
+                      "CONUS_forecast_grids_conduit":"CONUS_20km/RR_CONUS_20km",
+                      "CONUS_SPC":"NDFD/SPC/CONUS/NDFD_SPC_CONUS_2p5km",
+                      "CONUS_CPC":"NDFD/CPC/CONUS/NDFD_CPC_CONUS"},
+
+              "RTMA":{"meso_ana_2p5km":"RTMA/CONUS_2p5km/RTMA_CONUS_2p5km",
+                      "meso_guam_ana_2p5km":"RTMA/GUAM_2p5km/RTMA_GUAM_2p5km"},
+
+              "NCEP Blend":{"CONUS":"NBM/CONUS/National_Blend_CONUS",
+                            "Ocean":"NBM/Ocean/National_Blend_Ocean",
+                            "AK":"NBM/Alaska/National_Blend_Alaska",
+                            "HI":"NBM/Hawaii/National_Blend_Hawaii",
+                            "PR":"NBM/PuertoRico/National_Blend_PuertoRico"},
+
+              "NDFD":{"CONUS_forecast_grids_noaaport":"NDFD/SPC/CONUS/NDFD_SPC_CONUS_2p5km",
+                      "CONUS_forecast_grids_conduit":"CONUS_20km/RR_CONUS_20km",
+                      "CONUS_SPC":"NDFD/SPC/CONUS/NDFD_SPC_CONUS_2p5km",
+                      "CONUS_CPC":"NDFD/CPC/CONUS/NDFD_CPC_CONUS"},
+
+              "RTMA":{"meso_ana_2p5km":"RTMA/CONUS_2p5km/RTMA_CONUS_2p5km",
+                      "meso_guam_ana_2p5km":"RTMA/GUAM_2p5km/RTMA_GUAM_2p5km"},
+
+              } # end dict
+
+    # Top of Thredds catalog
+    self.cat_top_url = "https://thredds.ucar.edu/thredds/catalog.xml"
+
     # Need staticmethod to keep this from becoming a bound method, where self
     # is passed implicitly
     unit_handler = staticmethod(default_unit_handler)
@@ -132,12 +158,14 @@ class NCSS(HTTPEndPoint):
 
     def get_var_browser(self,model,prod,datetime_obj,init_hour):
         '''
-        Reference for specific variable(s) needed for queue.
+        Opens new browser tab with NCSS variables for desired model and product.
 
-        Opens new browser tab with NCSS variables for desired model and product
+        * Use if unsure of the variable name desired in specific dataset for
+            certain model datasets.
+
         -----------------------------------------------------------------------
 
-        See model_dict dictionary for help
+        * See model_dict dictionary for help
 
         arguments
         ---------
@@ -153,7 +181,7 @@ class NCSS(HTTPEndPoint):
         init_hour : str (HHHH)
             initialization hour for dataset
 
-        -------------
+        -----------------------------------------------------------------------
         Example args:
             model -> "RAP" (Rapid Refresh)
             product -> "CONUS_13km" (13km CONUS)
@@ -164,7 +192,7 @@ class NCSS(HTTPEndPoint):
         '''
         import webbrowser
         cat_1 = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
-        cat_2 = f"{model}/{self.model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
+        cat_2 = f"{self.model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
             f"_{init_hour}.grib2/dataset.html"
 
         self.catalog = cat_1+cat_2
