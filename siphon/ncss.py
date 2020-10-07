@@ -163,14 +163,13 @@ class NCSS(HTTPEndPoint):
         '''
         Opens new browser tab with NCSS variables for desired model and product.
 
-        * Use if unsure of the variable name desired in specific dataset for
-            certain model datasets.
+        * Use if unsure of the variable name desired for certain model datasets
+            when trying to query and grab data
 
         -----------------------------------------------------------------------
 
-        * See model_dict dictionary for help
 
-        arguments
+        Arguments
         ---------
         model : str
             name for model in THREDDS server, ie RAP, or NAM, etc
@@ -184,6 +183,15 @@ class NCSS(HTTPEndPoint):
         init_hour : str (HHHH)
             initialization hour for dataset
 
+        Returns
+        -------
+        catalog : str
+            url for supplied arguments
+
+        See Also
+        --------
+        thredds_model_dict
+
         -----------------------------------------------------------------------
         Example args:
             model -> "RAP" (Rapid Refresh)
@@ -191,18 +199,16 @@ class NCSS(HTTPEndPoint):
             datetime_obj -> datetime.datetime.utcnow()
             init_hour = "0000"
 
-
         '''
-        import webbrowser
 
+        import webbrowser
         # Top of Thredds catalog
-        self.cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
+        cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
         cat_2 = f"{self.thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
             f"_{init_hour}.grib2/dataset.html"
-
-        self.catalog = self.cat_top_url+cat_2
-        webbrowser.open(self.catalog)
-
+        catalog = cat_top_url+cat_2
+        webbrowser.open(catalog)
+        return catalog
 
     def get_data(self, query):
         """Fetch parsed data from a THREDDS server using NCSS.
