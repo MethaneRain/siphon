@@ -50,9 +50,9 @@ class NCSS(HTTPEndPoint):
     # Dictionary for fetching url for ncss variables based off model and
     # product/domain.
     # Model:{Product:url extension}
-    model_dict = {"RAP":{"CONUS_13km":"CONUS_13km/RR_CONUS_13km",
-                     "CONUS_20km":"CONUS_20km/RR_CONUS_20km",
-                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km"},
+    model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
+                     "CONUS_20km":"RAP/CONUS_20km/RR_CONUS_20km",
+                     "CONUS_40km":"RAP/CONUS_40km/RR_CONUS_40km"},
 
               "GFS":{"0p25_ana":"GFS/Global_0p25deg_ana/GFS_Global_0p25deg_ana",
                      "0p25":"GFS/Global_0p25deg/GFS_Global_0p25deg",
