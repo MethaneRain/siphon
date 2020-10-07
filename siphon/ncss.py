@@ -52,7 +52,7 @@ class NCSS(HTTPEndPoint):
     # Model:{Product:url extension}
     model_dict = {"RAP":{"CONUS_13km":"CONUS_13km/RR_CONUS_13km",
                      "CONUS_20km":"CONUS_20km/RR_CONUS_20km",
-                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km"},"\n",
+                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km"},
 
               "GFS":{"0p25_ana":"Global_0p25deg_ana/GFS_Global_0p25deg_ana",
                      "0p25":"Global_0p25deg/GFS_Global_0p25deg",
