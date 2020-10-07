@@ -143,8 +143,11 @@ def open_var_browser(model,prod,datetime_obj,init_hour):
     cat_2 = f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
         f"_{init_hour}.grib2/dataset.html"
     catalog = cat_top_url+cat_2
+    print(catalog)
+    catalog_xml = cat_top_url+f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
+        f"_{init_hour}.grib2/dataset.xml"
     webbrowser.open(catalog)
-    return catalog
+    return catalog_xml
 
 
 class NCSS(HTTPEndPoint):
