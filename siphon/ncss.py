@@ -95,7 +95,7 @@ thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
 
           } # end dict
 
-def open_var_browser(model,prod,datetime_obj,init_hour):
+def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=False):
     '''
     Opens new browser tab with NCSS variables for desired model and product.
 
@@ -138,15 +138,23 @@ def open_var_browser(model,prod,datetime_obj,init_hour):
     '''
 
     import webbrowser
+
+    url_ext = f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
+        f"_{init_hour}
+
     # Top of Thredds catalog
     cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
-    cat_2 = f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
-        f"_{init_hour}.grib2/dataset.html"
+    cat_2 = f"{url_ext}.grib2/dataset.html"
     catalog = cat_top_url+cat_2
-    print(catalog)
-    catalog_xml = cat_top_url+f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
-        f"_{init_hour}.grib2/dataset.xml"
-    webbrowser.open(catalog)
+    #print(catalog)
+
+    cat_top_xlm = "https://thredds.ucar.edu/thredds/catalog/grib/NCEP/"
+    cat_xlm_2 = f"{url_ext}.grib2/catalog.xml"
+    catalog_xml = cat_top_xlm+cat_xlm_2
+
+    if open_browser == True:
+        webbrowser.open(catalog)
+
     return catalog_xml
 
 
