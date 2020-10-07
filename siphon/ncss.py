@@ -47,10 +47,15 @@ class NCSS(HTTPEndPoint):
         :func:`numpy.array`.
 
     """
-    # Dictionary for fetching url for ncss variables based off model and
-    # product/domain.
+    # Dictionary for fetching url for ncss variables based off model and product/domain.
+
+    # Certain set of datasets on the THREDDS server have multiple variables available
+    # that can be accessed via Netcdf SubSet. This dictionary houses the file extentions
+    # needed to bring up browser with desired model (GFS) and product/domain (CONUS_20km)
+    # see open_var_browser() method below
+
     # Model:{Product:url extension}
-    model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
+    thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
                      "CONUS_20km":"RAP/CONUS_20km/RR_CONUS_20km",
                      "CONUS_40km":"RAP/CONUS_40km/RR_CONUS_40km"},
 
@@ -154,7 +159,7 @@ class NCSS(HTTPEndPoint):
         # Make sure all variables are in the dataset
         return bool(query.var) and all(var in self.variables for var in query.var)
 
-    def get_var_browser(self,model,prod,datetime_obj,init_hour):
+    def open_var_browser(self,model,prod,datetime_obj,init_hour):
         '''
         Opens new browser tab with NCSS variables for desired model and product.
 
