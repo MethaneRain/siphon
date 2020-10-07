@@ -47,7 +47,45 @@ class NCSS(HTTPEndPoint):
         :func:`numpy.array`.
 
     """
+    model_dict = {"Model:{Product:url extension}":"",
+                  "RAP":{"CONUS_13km":"CONUS_13km/RR_CONUS_13km",
+                     "CONUS_20km":"CONUS_20km/RR_CONUS_20km",
+                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km\n"},
 
+              "GFS":{"0p25_ana":"Global_0p25deg_ana/GFS_Global_0p25deg_ana",
+                     "0p25":"Global_0p25deg/GFS_Global_0p25deg",
+                     "0p5_ana":"Global_0p5deg_ana/GFS_Global_0p5deg_ana",
+                     "0p5":"Global_0p5deg/GFS_Global_0p5deg",
+                     "onedeg_ana":"Global_onedeg_ana/GFS_Global_onedeg_ana",
+                     "onedeg":"Global_onedeg/GFS_Global_onedeg",
+                     "Pac_20km":"Pacific_20km/GFS_Pacific_20km",
+                     "PR_0p25":"Puerto_Rico_0p25deg/GFS_Puerto_Rico_0p25deg",
+                     "CONUS_95km":"CONUS_95km/GFS_CONUS_95km",
+                     "CONUS_80km":"CONUS_80km/GFS_CONUS_80km",
+                     "CONUS_20km":"CONUS_20km/GFS_CONUS_20km",
+                     "AK_20km":"Alaska_20km/GFS_Alaska_20km"},
+
+              "HRRR":{"CONUS_3km":"CONUS_3km/surface/HRRR_CONUS_3km",
+                      "CONUS_2p5km_ana":"CONUS_2p5km_ANA/HRRR_CONUS_2p5km_ana",
+                      "CONUS_2p5km":"CONUS_2p5km/HRRR_CONUS_2p5km"},
+
+              "GEFS":{"onedeg_ana":"Global_1p0deg_Ensemble/members-analysis/GEFS_Global_1p0deg_Ensemble_ana",
+                  "onedeg":"Global_1p0deg_Ensemble/members/GEFS_Global_1p0deg_Ensemble",
+                  "onedeg_derived":"Global_1p0deg_Ensemble/derived/GEFS_Global_1p0deg_Ensemble_derived"},
+
+              "NAM":{"AK_11km":"Alaska_11km/NAM_Alaska_11km",
+                                    "AK_45km_noaaport":"Alaska_45km/noaaport",
+                                    "AK_45km_conduit":"Alaska_45km/conduit",
+                                    "AK_95km":"Alaska_95km",
+                                    "CONUS_12km_noaaport":"CONUS_12km/NAM_CONUS_12km",
+                                    "CONUS_12km_conduit":"CONUS_12km/conduit",
+                                    "CONUS_20km":"CONUS_20km/noaaport",
+                                    "CONUS_40km":"CONUS_40km/noaaport",
+                                    "CONUS_80km":"CONUS_80km/noaaport",
+                                    "Polar_90km":"Polar_90km",
+                                    "Fireweather_nested":"Firewxnest",
+                                    }
+              }
     # Need staticmethod to keep this from becoming a bound method, where self
     # is passed implicitly
     unit_handler = staticmethod(default_unit_handler)
@@ -89,6 +127,34 @@ class NCSS(HTTPEndPoint):
         """
         # Make sure all variables are in the dataset
         return bool(query.var) and all(var in self.variables for var in query.var)
+
+    def get_var_info(self,model,prod,datetime_obj,init_hour):
+        '''
+        Reference for specific variable names needed for queue.
+
+        Opens new browser tab with NCSS variables for desired model and product
+        -----------------------------------------------------------------------
+
+        See model_dict dictionary for help
+
+
+        Example args:
+            Model -> RAP (Rapid Refresh)
+            Product -> 13km (13km CONUS)
+
+        NCSS.model_dict["RAP"]["13km"]
+
+        >>>
+
+        '''
+        import webbrowser
+        cat_1 = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
+        cat_2 = f"{model}/{self.model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
+            f"_{init_hour}.grib2/dataset.html"
+
+        self.catalog = cat_1+cat_2
+        webbrowser.open(self.catalog)
+
 
     def get_data(self, query):
         """Fetch parsed data from a THREDDS server using NCSS.
