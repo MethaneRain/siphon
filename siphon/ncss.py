@@ -47,10 +47,13 @@ class NCSS(HTTPEndPoint):
         :func:`numpy.array`.
 
     """
+    # Dictionary for fetching url for ncss variables based off model and
+    # product/domain.
+    # Model:{Product:url extension}
     model_dict = {"Model:{Product:url extension}":"",
                   "RAP":{"CONUS_13km":"CONUS_13km/RR_CONUS_13km",
                      "CONUS_20km":"CONUS_20km/RR_CONUS_20km",
-                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km\n"},
+                     "CONUS_40km":"CONUS_40km/RR_CONUS_40km"},"\n",
 
               "GFS":{"0p25_ana":"Global_0p25deg_ana/GFS_Global_0p25deg_ana",
                      "0p25":"Global_0p25deg/GFS_Global_0p25deg",
@@ -128,23 +131,36 @@ class NCSS(HTTPEndPoint):
         # Make sure all variables are in the dataset
         return bool(query.var) and all(var in self.variables for var in query.var)
 
-    def get_var_info(self,model,prod,datetime_obj,init_hour):
+    def get_var_browser(self,model,prod,datetime_obj,init_hour):
         '''
-        Reference for specific variable names needed for queue.
+        Reference for specific variable(s) needed for queue.
 
         Opens new browser tab with NCSS variables for desired model and product
         -----------------------------------------------------------------------
 
         See model_dict dictionary for help
 
+        arguments
+        ---------
+        model : str
+            name for model in THREDDS server, ie RAP, or NAM, etc
 
+        prod : str
+            name for the product/domain for given model, ie CONUS_13km
+
+        datetime_obj : datetime
+            date and time for THREDDS and NCSS url dataset
+
+        init_hour : str (HHHH)
+            initialization hour for dataset
+
+        -------------
         Example args:
-            Model -> RAP (Rapid Refresh)
-            Product -> 13km (13km CONUS)
+            model -> "RAP" (Rapid Refresh)
+            product -> "CONUS_13km" (13km CONUS)
+            datetime_obj -> datetime.datetime.utcnow()
+            init_hour = "0000"
 
-        NCSS.model_dict["RAP"]["13km"]
-
-        >>>
 
         '''
         import webbrowser
