@@ -197,7 +197,7 @@ class NCSS(HTTPEndPoint):
 
         # Top of Thredds catalog
         self.cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
-        cat_2 = f"{self.model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
+        cat_2 = f"{self.thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
             f"_{init_hour}.grib2/dataset.html"
 
         self.catalog = self.cat_top_url+cat_2
