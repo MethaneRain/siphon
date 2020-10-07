@@ -140,7 +140,7 @@ def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=False):
     import webbrowser
 
     url_ext = f"{thredds_model_dict[model][prod]}_{datetime_obj.year}{datetime_obj.month:02d}{datetime_obj.day:02d}"+\
-        f"_{init_hour}
+        f"_{init_hour}"
 
     # Top of Thredds catalog
     cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
