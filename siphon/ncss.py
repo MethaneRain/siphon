@@ -121,8 +121,8 @@ def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=False):
 
     Returns
     -------
-    catalog : str
-        url for supplied arguments
+    catalog_xlm : str
+        url for supplied arguments to use in siphon.catalog -> TDSCatalog() method
 
     See Also
     --------
@@ -146,10 +146,12 @@ def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=False):
     cat_top_url = "https://thredds.ucar.edu/thredds/ncss/grib/NCEP/"
     cat_2 = f"{url_ext}.grib2/dataset.html"
     catalog = cat_top_url+cat_2
-    #print(catalog)
 
     cat_top_xlm = "https://thredds.ucar.edu/thredds/catalog/grib/NCEP/"
     cat_xlm_2 = f"{url_ext}.grib2/catalog.xml"
+
+    # catalog xlm url for desired model, product, time, and init hour
+    # can use this url in the siphon.catalog TDSCatalog() method
     catalog_xml = cat_top_xlm+cat_xlm_2
 
     if open_browser == True:
