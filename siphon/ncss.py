@@ -25,13 +25,14 @@ def default_unit_handler(data, units=None):  # pylint:disable=unused-argument
     """
     return np.array(data)
 
-
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Dictionary for fetching url for ncss variables based off model and product/domain.
 
-# Certain set of datasets on the THREDDS server have multiple variables available
+# Certain datasets on the THREDDS server have multiple variables available
 # that can be accessed via Netcdf SubSet. This dictionary houses the file extentions
-# needed to bring up browser with desired model (GFS) and product/domain (CONUS_20km)
-# see open_var_browser() method below
+# needed to bring up browser with desired model (ie GFS) and product/domain (ie CONUS_20km)
+
+# see open_var_browser() method for opening a new browser tab
 
 # Model:{Product:url extension}
 thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
@@ -94,16 +95,17 @@ thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
                   "meso_guam_ana_2p5km":"RTMA/GUAM_2p5km/RTMA_GUAM_2p5km"},
 
           } # end dict
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
 
 def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=True):
-    '''
-    Opens new browser tab with NCSS variables for desired model and product.
+    """Opens new browser tab with NCSS variables for desired model and product.
 
     * Use if unsure of the variable name desired for certain model datasets
-        when trying to query and grab data
+        when trying to query data with siphon.ncss.query(var_name(s))
 
     -----------------------------------------------------------------------
-
 
     Arguments
     ---------
@@ -135,7 +137,7 @@ def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=True):
         datetime_obj -> datetime.datetime.utcnow()
         init_hour = "0000"
 
-    '''
+    """
 
     import webbrowser
 
