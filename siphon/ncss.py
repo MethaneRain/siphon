@@ -95,7 +95,7 @@ thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
 
           } # end dict
 
-def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=False):
+def open_var_browser(model,prod,datetime_obj,init_hour,open_browser=True):
     '''
     Opens new browser tab with NCSS variables for desired model and product.
 
