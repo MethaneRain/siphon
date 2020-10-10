@@ -157,7 +157,7 @@ class NCSS(HTTPEndPoint):
         iso = data.variables[var_name].coordinates[:]
         if "isobaric" in iso:
             finder = iso.find("isobaric")
-            iso_num = iso[finder:finder+9]
+            iso_num = iso[finder:finder+9].replace(" ","")
         else:
             print("no isobaricX varible name in dataset.")
         return iso_num
