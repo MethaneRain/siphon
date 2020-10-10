@@ -139,7 +139,7 @@ class NCSS(HTTPEndPoint):
 
         
         
-    def get_isobaric_num(self,var_name):
+    def get_isobaric_num(self,data,var_name):
         """Grab isobaric number if one exists for specified variable name
 
         Argument
