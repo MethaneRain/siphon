@@ -137,7 +137,32 @@ class NCSS(HTTPEndPoint):
         """
         return self.get_query(query).content
 
+        
+        
+    def get_isobaric_num(self,var_name):
+        """Grab isobaric number if one exists for specified variable name
 
+        Argument
+        --------
+        var_name : str
+        Appropriate variable name for searching in dataset variables
+
+        Returns
+        -------
+        iso_num : str
+        String containing full isobaric variable name
+        ie isobaric1 or isobaric7, etc.
+        """
+
+        iso = data.variables[var_name].coordinates[:]
+        if "isobaric" in iso:
+            finder = iso.find("isobaric")
+            iso_num = iso[finder:finder+9]
+        else:
+            print("no isobaricX varible name in dataset.")
+        return iso_num
+
+        
 class NCSSQuery(DataQuery):
     """Represent a query to the NetCDF Subset Service (NCSS).
 
