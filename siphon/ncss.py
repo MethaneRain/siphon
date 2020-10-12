@@ -138,7 +138,6 @@ class NCSS(HTTPEndPoint):
         return self.get_query(query).content
 
         
-        
     def get_isobaric_num(self,data,var_name):
         """Grab isobaric number if one exists for specified variable name
 
@@ -154,12 +153,13 @@ class NCSS(HTTPEndPoint):
         ie isobaric1 or isobaric7, etc.
         """
 
-        iso = data.variables[var_name].coordinates[:]
         if "isobaric" in iso:
+            iso = data.variables[var_name].coordinates[:]
             finder = iso.find("isobaric")
             iso_num = iso[finder:finder+9].replace(" ","")
         else:
-            print("no isobaricX varible name in dataset.")
+            print("no isobaricX variable name in dataset.")
+            iso_num = ""
         return iso_num
 
         
