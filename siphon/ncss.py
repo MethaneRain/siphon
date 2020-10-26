@@ -34,7 +34,7 @@ def default_unit_handler(data, units=None):  # pylint:disable=unused-argument
 
 # see open_var_browser() method for opening a new browser tab
 
-# Model:{Product:url extension}
+# {Model:{Product:url extension}}
 thredds_model_dict = {"RAP":{"CONUS_13km":"RAP/CONUS_13km/RR_CONUS_13km",
                  "CONUS_20km":"RAP/CONUS_20km/RR_CONUS_20km",
                  "CONUS_40km":"RAP/CONUS_40km/RR_CONUS_40km"},
