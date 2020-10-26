@@ -52,3 +52,5 @@ nosetests.xml
 
 # Translations
 *.mo
+
+.vscode/
